@@ -1,13 +1,16 @@
 import HelloWorld from "components/HelloWorld";
 import "main.css";
 
-import cityStateClass from "states/cityState";
-import weatherInfosState from "states/weatherInfosState";
-
 import eventBus from "eventBus";
+import { getCurrentWeather } from "./api";
+import config from "config";
 
 const main = async () => {
-  HelloWorld();
+  //Automatic refresh every two hours
+  setTimeout(() => getCurrentWeather(), config.updateEvery * 60 * 60 * 1000);
+  //Automatic data refresh if city changes
+  new eventBus().subscribe("city", getCurrentWeather);
+
 };
 
 main().then(() => console.log("Started"));

@@ -1,6 +1,7 @@
 import config from "../config";
 import cityState from "../states/cityState";
 import weatherInfosState from "../states/weatherInfosState";
+import EventBus from "../eventBus";
 
 async function apiCall(city, endpoint) {
   const cityReq = `q=${city}`;
@@ -33,3 +34,5 @@ export async function getCurrentWeather() {
 
   return weatherState.getData();
 }
+
+

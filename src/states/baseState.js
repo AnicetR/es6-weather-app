@@ -1,3 +1,5 @@
+import EventBus from "../eventBus";
+
 export class baseState{
     constructor(stateName){
         this.stateName = stateName;
@@ -8,6 +10,7 @@ export class baseState{
     setState(data){
         window.localStorage.setItem(this.stateName+this.lastUpdateBasePath, Date.now());
         window.localStorage.setItem(this.stateName+this.dataBasePath, JSON.stringify(data));
+        new EventBus().publish(this.stateName, 'updated');
     }
 
     getState(){
