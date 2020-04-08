@@ -12,9 +12,13 @@ const main = async () => {
     getCurrentWeather()
   }
   //Automatic refresh every two hours
-  setTimeout(() => getCurrentWeather(), config.updateEvery * 60 * 60 * 1000);
+  setTimeout(getCurrentWeather, config.updateEvery * 60 * 60 * 1000);
   //Automatic data refresh if city changes
   new eventBus().subscribe("city", getCurrentWeather);
+  //Automatic upload if cache is too old
+  if((new weatherInfosState().getData().lastUpdate + config.updateEvery * 60 * 60 * 1000) < Date.now()){
+    getCurrentWeather();
+  }
 
   forecastView();
 };

@@ -29,8 +29,7 @@ export async function getCurrentWeather() {
 
   if (
     typeof weatherState.data === typeof undefined ||
-    city !== weatherState.data.cityName ||
-    weatherState.lastUpdate + config.updateEvery * 60 * 60 * 1000 < Date.now()
+    city !== weatherState.data.cityName
   ) {
     const currentWeatherData = await apiCall(city, "weather");
     const data = await apiCall(currentWeatherData.coord, "onecall");
