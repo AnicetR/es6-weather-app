@@ -1,6 +1,8 @@
 # ES6 Weather App
-Simple pure ES6 weather app
+Simple pure ES6 weather app.
 Done to challenge myself (3 effective hours to make a small app)
+
+![Screenshot](https://i.ibb.co/nMnRq0H/es6weather.png)
 
 Based on https://github.com/sweetcoco/webpack-babel-boilerplate.git and OpenWeather
 
