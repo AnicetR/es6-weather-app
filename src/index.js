@@ -1,4 +1,3 @@
-import HelloWorld from "components/HelloWorld";
 import "main.css";
 
 import eventBus from "eventBus";

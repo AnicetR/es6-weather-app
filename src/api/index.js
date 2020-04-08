@@ -4,7 +4,7 @@ import weatherInfosState from "../states/weatherInfosState";
 import EventBus from "../eventBus";
 
 async function apiCall(city, endpoint) {
-  let cityReq = '';
+  let cityReq = "";
   if (typeof city === "string") {
     cityReq = `q=${city}`;
   } else {

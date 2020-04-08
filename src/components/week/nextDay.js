@@ -10,5 +10,5 @@ export default (day, icon, tempMax, tempMin) => {
         <h5>${kelvinToCelcius(tempMax)}°C</h5>
         <h6>${kelvinToCelcius(tempMin)}°C</h6>
    `;
-   return template;
+  return template;
 };

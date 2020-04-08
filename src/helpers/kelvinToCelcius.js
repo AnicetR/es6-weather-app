@@ -1,3 +1,1 @@
-export default (kelvin) => {
-    return (kelvin - 273.15).toFixed(1);
-}
+export default kelvin => (kelvin - 273.15).toFixed(1);

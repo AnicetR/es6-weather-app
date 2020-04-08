@@ -31,7 +31,7 @@ export default function forecastView() {
     </div>
     `;
 
-    document.body.innerHTML = template;
+  document.body.innerHTML = template;
 
   //Load & init skycons from maxdow
   skycons();
@@ -44,12 +44,9 @@ export default function forecastView() {
   }
   icons.play();
 
-
-
   //render on data update
   new EventBus().subscribe("weatherInfosUpdate", forecastView);
 }
-
 
 //Hack to have unique id for every icons to avoid double ids
 const iconList = (daysForecast) => {
