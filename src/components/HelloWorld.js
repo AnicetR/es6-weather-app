@@ -1,4 +1,4 @@
-import {getPost} from 'api';
+import {getCurrentWeather} from 'api';
 
 async function HelloWorld() {
     const div = document.createElement('div');
@@ -10,8 +10,8 @@ async function HelloWorld() {
     document.body.appendChild(div);
     div.appendChild(h1);
 
-    const postId = 1;
-    const post = await getPost(postId);
+    const post = await getCurrentWeather();
+    console.log(await getCurrentWeather())
 
     const postTitle = post.title || 'Oops title was null!';
     const p = document.createElement('p');
