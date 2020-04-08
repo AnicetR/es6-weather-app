@@ -1,4 +1,5 @@
 import nextDay from "./nextDay";
+import dayOfWeek from "../../helpers/dayOfWeek";
 
 export default (data) => {
     let template = `
@@ -11,10 +12,12 @@ export default (data) => {
 }
 
 const weekContent = function(data){
+    data = data.slice(1)
+    console.log(data);
     let template = "";
 
-    for (let i = 0; i < 7; i++){
-        template += `<li>${nextDay("WED", 'cloud', 10, -5)}</li>`;
+    for (let i = 0; i < data.length; i++){
+        template += `<li>${nextDay(data[i].dt, 'cloud', data[i].temp.max, data[i].temp.min)}</li>`;
     }
 
     return template;

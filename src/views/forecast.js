@@ -7,17 +7,16 @@ import weatherInfosState from "../states/weatherInfosState";
 export default function forecastView() {
 
     const weatherState = new weatherInfosState();
-
-    
+    const weatherData = weatherState.getData().data;
 
   const template = `
     <div class="main-info">
         <div class="weather-top">	
-            ${todayComponent()}
+            ${todayComponent(weatherData.cityName, weatherData.infos.current, weatherData.infos.daily[0])}
             <div class="clear"> </div>
         </div>
         <div class="weather-bottom">	
-            ${weekComponent([])}
+            ${weekComponent(weatherData.infos.daily)}
             <div class="clear"> </div>
         </div>
     </div>
