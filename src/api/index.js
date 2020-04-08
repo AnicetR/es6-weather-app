@@ -4,7 +4,15 @@ import weatherInfosState from "../states/weatherInfosState";
 import EventBus from "../eventBus";
 
 async function apiCall(city, endpoint) {
-  const cityReq = `q=${city}`;
+  let cityReq = '';
+  if (typeof city === "string") {
+    cityReq = `q=${city}`;
+  } else {
+    cityReq = `lat=${city.lat}&lon=${city.lon}`;
+  }
+
+  console.log(city);
+
   const apiKeyReq = `appid=${config.apiKey}`;
 
   const response = await fetch(
@@ -20,19 +28,15 @@ export async function getCurrentWeather() {
   const weatherState = new weatherInfosState();
 
   if (
+    typeof weatherState.data === typeof undefined ||
     city !== weatherState.data.cityName ||
     weatherState.lastUpdate + config.updateEvery * 60 * 60 * 1000 < Date.now()
   ) {
     const currentWeatherData = await apiCall(city, "weather");
-    const dailyForecast = await apiCall(city, "forecast");
+    const data = await apiCall(currentWeatherData.coord, "onecall");
 
-    weatherState.setData(city, {
-      current: currentWeatherData,
-      dailyForecast: dailyForecast,
-    });
+    weatherState.setData(city, data);
   }
 
   return weatherState.getData();
 }
-
-
