@@ -7,7 +7,8 @@ export default class weatherInfosState extends baseState {
   }
 
   setData(cityName, weatherInfos) {
-    new eventBus().publish("test", "test !");
+    new eventBus().publish("weatherInfosUpdate", null);
+
     super.setState({
       cityName: cityName,
       infos: weatherInfos,
