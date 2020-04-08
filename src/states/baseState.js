@@ -16,7 +16,7 @@ export class baseState{
     getState(){
         return {
             lastUpdate: window.localStorage.getItem(this.stateName+this.lastUpdateBasePath),
-            data: JSON.parse(window.localStorage.getItem(this.stateName+this.lastUpdateBasePath))
+            data: JSON.parse(window.localStorage.getItem(this.stateName+this.dataBasePath))
         }
     }
 }
