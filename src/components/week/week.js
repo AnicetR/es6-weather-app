@@ -1,5 +1,5 @@
 import nextDay from "./nextDay";
-import dayOfWeek from "../../helpers/dayOfWeek";
+import openWeatherIconsToSkycons from '../../helpers/openWeatherIconsToSkycons';
 
 export default (data) => {
     let template = `
@@ -17,7 +17,7 @@ const weekContent = function(data){
     let template = "";
 
     for (let i = 0; i < data.length; i++){
-        template += `<li>${nextDay(data[i].dt, 'cloud', data[i].temp.max, data[i].temp.min)}</li>`;
+        template += `<li>${nextDay(data[i].dt, openWeatherIconsToSkycons(data[i].weather[0].icon) + data[i].dt, data[i].temp.max, data[i].temp.min)}</li>`;
     }
 
     return template;

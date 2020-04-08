@@ -31,23 +31,35 @@ export default function forecastView() {
   //Load & init skycons from maxdow
   skycons();
 
-  const icons = new Skycons({ monochrome: false }),
-    list = [
-      "clear-day",
-      "clear-night",
-      "partly-cloudy-day",
-      "partly-cloudy-night",
-      "cloudy",
-      "rain",
-      "sleet",
-      "snow",
-      "wind",
-      "fog",
-    ];
+  const icons = new Skycons({ monochrome: false });
+    
+  const iconListArray = iconList(weatherData.infos.daily);
 
-  for (let i = list.length; i--; ) {
-    icons.set(list[i], list[i]);
+  console.log(iconListArray)
+  for (let i = iconListArray.length; i--; ) {
+    for(let j = iconListArray[i].length; j--; ){
+      icons.set(iconListArray[i][j][0], iconListArray[i][j][1]);
+    }
   }
-
   icons.play();
+}
+
+
+//Hack to have unique id for every icons to avoid double ids
+const iconList = (daysForecast) => {
+  const originalList = [
+    "clear-day",
+    "clear-night",
+    "partly-cloudy-day",
+    "partly-cloudy-night",
+    "cloudy",
+    "rain",
+    "sleet",
+    "snow",
+    "wind",
+    "fog",
+    "showers-day"
+  ];
+  
+  return daysForecast.map(dayData => originalList.map(iconName => [iconName+dayData.dt, iconName]))
 }
